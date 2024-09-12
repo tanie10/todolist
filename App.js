@@ -8,7 +8,6 @@ export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Add a new task to the list
   const handleAddTask = () => {
     if (newTask.trim() === '') {
       Alert.alert('Error', 'Task cannot be empty');
@@ -19,12 +18,10 @@ export default function App() {
     setNewTask('');
   };
 
-  // Remove a task from the list
   const handleDeleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  // Update an existing task
   const handleUpdateTask = () => {
     setTasks(
       tasks.map(task =>
@@ -35,19 +32,16 @@ export default function App() {
     setIsModalVisible(false);
   };
 
-  // Open modal with the task to be edited
   const handleEditTask = (task) => {
     setCurrentTask(task);
     setNewTask(task.text);
     setIsModalVisible(true);
   };
 
-  // Filter tasks based on search input
   const filteredTasks = tasks.filter(task =>
     task.text.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Render each task item
   const renderTaskItem = ({ item }) => (
     <View style={styles.taskItem}>
       <Text style={styles.taskText}>{item.text}</Text>
@@ -66,7 +60,7 @@ export default function App() {
     <View style={styles.appContainer}>
       <Text style={styles.title}>To-Do List</Text>
 
-      {/* Input for adding a new task */}
+      {}
       <View style={styles.inputWrapper}>
         <TextInput
           style={styles.inputField}
@@ -79,7 +73,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      {/* Search bar */}
+      {}
       <TextInput
         style={styles.searchField}
         placeholder="Search tasks"
@@ -87,14 +81,14 @@ export default function App() {
         onChangeText={setSearchTerm}
       />
 
-      {/* List of tasks */}
+      {}
       <FlatList
         data={filteredTasks}
         renderItem={renderTaskItem}
         keyExtractor={(item) => item.id}
       />
 
-      {/* Modal for editing a task */}
+      {}
       <Modal
         animationType="slide"
         transparent={true}
@@ -122,7 +116,6 @@ export default function App() {
   );
 }
 
-// Styles for the components
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
